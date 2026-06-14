@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بطاقة التواصل - أحمد سيد حسن</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: "Cairo", sans-serif;
+    }
+
+    body{
+        background:#000;
+        color:#fff;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+        padding:20px;
+    }
+
+    .card{
+        width:100%;
+        max-width:420px;
+        background:#111;
+        border:2px solid #D4AF37;
+        border-radius:25px;
+        overflow:hidden;
+        box-shadow:0 0 30px rgba(212,175,55,.2);
+    }
+
+    .header{
+        text-align:center;
+        padding:30px 20px 15px;
+        background:linear-gradient(180deg,#000,#111);
+    }
+
+    .header img{
+        width:130px;
+        height:130px;
+        border-radius:50%;
+        background:#fff;
+        padding:5px;
+        margin-bottom:15px;
+    }
+
+    .name{
+        font-size:32px;
+        font-weight:700;
+        color:#D4AF37;
+    }
+
+    .title{
+        font-size:22px;
+        margin-top:10px;
+        color:#fff;
+    }
+
+    .info{
+        padding:25px;
+    }
+
+    .item{
+        display:flex;
+        align-items:center;
+        gap:15px;
+        margin-bottom:20px;
+        font-size:22px;
+    }
+
+    .icon{
+        font-size:28px;
+        color:#D4AF37;
+    }
+
+    .save-btn{
+        display:block;
+        width:90%;
+        margin:20px auto 30px;
+        background:#D4AF37;
+        color:#000;
+        border:none;
+        padding:18px;
+        border-radius:15px;
+        font-size:22px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:.3s;
+    }
+
+    .save-btn:hover{
+        background:#f1cc5a;
+    }
+
+    .footer{
+        text-align:center;
+        padding-bottom:25px;
+    }
+
+    .footer p{
+        color:#aaa;
+        font-size:15px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="header">
+        <!-- ضع رابط لوجو الهيئة هنا -->
+        <img src="upa-logo.png" alt="UPA Logo">
+
+        <div class="name">
+            محاسب / أحمد سيد حسن
+        </div>
+
+        <div class="title">
+            مدير إدارة حسابات العملاء
+        </div>
+    </div>
+
+    <div class="info">
+
+        <div class="item">
+            <span class="icon">📞</span>
+            <span>01003637675</span>
+        </div>
+
+        <div class="item">
+            <span class="icon">✉️</span>
+            <span>Fistkaloo@gmail.com</span>
+        </div>
+
+    </div>
+
+    <button class="save-btn" onclick="saveContact()">
+        💾 حفظ جهة الاتصال
+    </button>
+
+    <div class="footer">
+        <p>الهيئة المصرية للشراء الموحد والإمداد والتموين الطبي</p>
+    </div>
+
+</div>
+
+<script>
+function saveContact() {
+
+    const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:Ahmed Sayed Hassan
+N:Hassan;Ahmed;;;
+TITLE:مدير إدارة حسابات العملاء
+ORG:الهيئة المصرية للشراء الموحد
+TEL;TYPE=CELL:01003637675
+EMAIL:Fistkaloo@gmail.com
+END:VCARD`;
+
+    const blob = new Blob([vcard], { type: 'text/vcard' });
+    const link = document.createElement('a');
+
+    link.href = URL.createObjectURL(blob);
+    link.download = 'Ahmed_Sayed_Hassan.vcf';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+
+</body>
+</html>
